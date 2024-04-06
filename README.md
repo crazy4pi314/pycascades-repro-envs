@@ -10,6 +10,7 @@ A software project being called "reproducible" can mean a lot of things, but usu
 - [Nix project for packaging the Jupyter Kernel](https://github.com/tweag/jupyenv)
 - [Great talk from NixCon2023 on working with Python in and from Nix](https://www.youtube.com/watch?v=y3CilqCdXJM)
 - [Catagorizing levels of reproducability on the Anaconda blog](https://www.anaconda.com/blog/8-levels-of-reproducibility)
+- [My talk from PyCascades 2023 on Dev Containers](https://aka.ms/pycascades_devcontainers)
 
 
 ### Speaker Profile:
