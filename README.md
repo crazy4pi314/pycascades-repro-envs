@@ -1,5 +1,5 @@
 # ![PyCascades 2024: I declare an environment! Reproducibility with and _without_ Docker](pycascades-title.png)
-[Schedule](https://pretalx.com/pycascades-2024/talk/JQPXA9/) | [Slides](slides.pdf)
+[Schedule](https://pretalx.com/pycascades-2024/talk/JQPXA9/) | [Slides](pycascades-repro-envs.pdf)
 
 A software project being called "reproducible" can mean a lot of things, but usually includes a description of how and where the code in your project can be run. Often this means including Python virtual environment, a Conda environment, or even a Docker container to help others replicate your work. In this talk I will introduce some of the most common ways the scientific Python community approaches reproducibility, and what are the advantages and disadvantages of the approaches. I will also share a new way that you can make not only your Python code but your development machine reproducible without Docker containers with a tool called Nix. I will also show an example of using a Nix defined operating system (NixOS) with Docker containers to run my home lab.
 
