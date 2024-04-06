@@ -15,7 +15,19 @@
 				"ms-azuretools.vscode-docker",
 				"ms-python.python",
 				"donjayamanne.python-environment-manager"
-			]
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "nix-shell",
+				"terminal.integrated.profiles.linux": {
+					"nix-shell": {
+						"path": "nix-shell",
+						"args": [
+							"/home/devcontainer/default.nix"
+						]
+					}
+				  },
+				"python.defaultInterpreterPath": "/home/devcontainer/nix-python"
+			}
 		}
 	}
 
