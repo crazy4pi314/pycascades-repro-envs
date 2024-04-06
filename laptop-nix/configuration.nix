@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -14,13 +10,9 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "venat"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  
+  # Define your hostname.
+  networking.hostName = "nixos-demo"; 
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -45,10 +37,6 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-
-#   environment.variables.GDK_SCALE = "2";
-#   environment.variables.QT_ENABLE_HIGHDPI_SCALING = "1";
-#   environment.variables.QT_SCALE_FACTOR = "2";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -80,21 +68,12 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sckaiser = {
+  # Define a user account.
+  users.users.demouser = {
     isNormalUser = true;
-    description = "sckaiser";
+    description = "demouser";
     extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [
         discord
@@ -105,7 +84,7 @@
     ];
   };
 
-  home-manager.users.sckaiser = { pkgs, ... }: {
+  home-manager.users.demouser = { pkgs, ... }: {
     home.packages = [ pkgs.atool pkgs.httpie ];
     programs.bash.enable = true;
     programs.nushell.enable = true;
@@ -124,51 +103,6 @@
         truncation_length = 3;
         truncation_symbol = "…/";
       };
-
-      # shell = {
-      #   disabled = false;
-      #   format = "$indicator";
-      #   fish_indicator = "";
-      #   bash_indicator = "[BASH](bright-white) ";
-      #   zsh_indicator = "[ZSH](bright-white) ";
-      # };
-      # hostname = {
-      #   style = "bright-green bold";
-      #   ssh_only = true;
-      # };
-      # nix_shell = {
-      #   symbol = "";
-      #   format = "[$symbol$name]($style) ";
-      #   style = "bright-purple bold";
-      # };
-      # git_branch = {
-      #   only_attached = true;
-      #   format = "[$symbol$branch]($style) ";
-      #   symbol = "שׂ";
-      #   style = "bright-yellow bold";
-      # };
-      # git_commit = {
-      #   only_detached = true;
-      #   format = "[ﰖ$hash]($style) ";
-      #   style = "bright-yellow bold";
-      # };
-      # git_state = {
-      #   style = "bright-purple bold";
-      # };
-      # git_status = {
-      #   style = "bright-green bold";
-      # };
-      # cmd_duration = {
-      #   format = "[$duration]($style) ";
-      #   style = "bright-blue";
-      # };
-      # jobs = {
-      #   style = "bright-green bold";
-      # };
-      # character = {
-      #   success_symbol = "[\\$](bright-green bold)";
-      #   error_symbol = "[\\$](bright-red bold)";
-      # };
     };
     # The state version is required and should stay at the version you
     # originally installed.
@@ -181,12 +115,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     inkscape-with-extensions
     vlc
     keepassxc
     git
-    vscodium
     vscode
     wget
     tailscale
@@ -201,15 +133,9 @@
     graphviz
     obs-studio
     htop
-    ticktick
   ];
   programs.steam.enable = true;
 
-  # fonts.fontconfig.defaultFonts = {
-  #   serif = ["NotoSans Nerd Font Propo"];
-  #   monospace = ["Hack Nerd Font Mono"];
-  #   sansSerif = ["NotoSans Nerd Font Propo"];
-  # };
 #----=[ Fonts ]=----#
 fonts = {
   enableDefaultPackages = true;
@@ -231,24 +157,6 @@ fonts = {
   };
 };
   virtualisation.docker.enable = true;
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
